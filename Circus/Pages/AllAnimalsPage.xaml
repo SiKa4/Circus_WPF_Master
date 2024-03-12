@@ -1,0 +1,102 @@
+﻿<Page x:Class="Circus.Pages.AllAnimalsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Circus.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="AllAnimalsPage">
+
+    <Grid Background="#13293D">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Животные"
+                   FontSize="36"
+                   Margin="279,21,0,0"
+                   Foreground="#333333"
+                   Grid.Row="0"
+                   Grid.RowSpan="2"
+                   HorizontalAlignment="Left"
+                   VerticalAlignment="Top"/>
+
+        <ListView x:Name="AnimalsLV"
+                  FontSize="20"
+                  Grid.Column="0"
+                  Grid.Row="1"
+                  MaxHeight="400"
+                  MaxWidth="780"
+                  Margin="20,84,20,128">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="Имя" Width="100" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Тип" Width="50" DisplayMemberBinding="{Binding AnimalType.Name}"/>
+                        <GridViewColumn Header="Возраст" Width="50" DisplayMemberBinding="{Binding Age}"/>
+                        <GridViewColumn Header="Вес" Width="50" DisplayMemberBinding="{Binding Weight}"/>
+                        <GridViewColumn Header="Пол" Width="50" DisplayMemberBinding="{Binding Gender}"/>
+                        <GridViewColumn Header="Предпочтения в еде" Width="190" DisplayMemberBinding="{Binding FoodPreference}"/>
+                        <GridViewColumn Header="Рекомендации по уходу" Width="190" DisplayMemberBinding="{Binding CareRecommendations}"/>
+                        <GridViewColumn Header="Дрессировщик" Width="100" DisplayMemberBinding="{Binding Worker.Surname}"/>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Left" Margin="20,321,0,48" Grid.RowSpan="2">
+            <Button x:Name="EditAnimalBTN"
+                    Content="Изменить"
+                    FontSize="20"
+                    Margin="10"
+                    Width="230"
+                    Height="40"
+                    Click="EditAnimalBTN_Click"
+                    Background="#FF5722"
+                    Foreground="White"/>
+            <Button x:Name="AddAnimalBTN"
+                    Content="Добавить"
+                    FontSize="20"
+                    Margin="10"
+                    Width="230"
+                    Height="40"
+                    Click="AddAnimalBTN_Click"
+                    Background="#FF5722"
+                    Foreground="White"/>
+            <Button x:Name="DeleteAnimalBTN"
+                    Content="Удалить"
+                    FontSize="20"
+                    Margin="10"
+                    Width="230"
+                    Height="40"
+                    Click="DeleteAnimalBTN_Click"
+                    Background="#FF5722"
+                    Foreground="White"/>
+        </StackPanel>
+
+        <Button x:Name="BackBTN"
+                Content="Назад"
+                FontSize="24"
+                Margin="10"
+                Width="200"
+                Height="40"
+                Grid.Row="2"
+                Click="BackBTN_Click"
+                Background="#4A90E2"
+                Foreground="White"
+                HorizontalAlignment="Center"/>
+
+        <Grid Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Text="🔎" FontSize="36" Margin="207,-147,-207,147"/>
+            <TextBox x:Name="SearchTB"
+                     Width="250"
+                     Height="40"
+                     Margin="255,-147,-245,157"
+                     FontSize="18"
+                     TextChanged="SearchTB_TextChanged"/>
+        </Grid>
+    </Grid>
+</Page>
